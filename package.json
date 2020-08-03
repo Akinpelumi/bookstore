@@ -1,0 +1,55 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "online book sales",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test nyc --reporter=text --reporter=html mocha -c -r esm server/test/**/ --timeout 12000 --exit",
+    "pretest": "NODE_ENV=test npm run lint && npm run migrate down && npm run migrate up",
+    "test-watch": "NODE_ENV=test nodemon --exec \"npm test\"",
+    "prestart": "npm run migrate:up",
+    "start": "node -r esm server/index.js",
+    "dev": "NODE_ENV=development nodemon -r esm server/index.js",
+    "lint": "eslint --fix --ext .js ./server",
+    "migrate": "db-migrate --migrations-dir ./server/db/migrations",
+    "migrate:up": "npm run migrate up",
+    "migrate:down": "npm run migrate down",
+    "migrate:create": "npm run migrate create",
+    "seed": "npm run migrate up:seeds",
+    "create:seed": "npm run migrate create:seeds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akinpelumi/bookstore.git"
+  },
+  "keywords": [
+    "books",
+    "download",
+    "sales"
+  ],
+  "author": "Akinpelumi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akinpelumi/bookstore/issues"
+  },
+  "homepage": "https://github.com/Akinpelumi/bookstore#readme",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "db-migrate": "^0.11.11",
+    "db-migrate-pg": "^1.2.2",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg-promise": "^10.5.8"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.5",
+    "nodemon": "^2.0.4"
+  }
+}
