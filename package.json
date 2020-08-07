@@ -4,7 +4,7 @@
   "description": "online book sales",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test nyc --reporter=text --reporter=html mocha -c -r esm server/test/**/ --timeout 12000 --exit",
+    "test": "NODE_ENV=test mocha -c -r esm server/test/**/ --timeout 30000 --exit",
     "pretest": "NODE_ENV=test npm run lint && npm run migrate down && npm run migrate up",
     "test-watch": "NODE_ENV=test nodemon --exec \"npm test\"",
     "prestart": "npm run migrate:up",
@@ -28,7 +28,7 @@
     "sales"
   ],
   "author": "Akinpelumi",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Akinpelumi/bookstore/issues"
   },
@@ -44,12 +44,17 @@
     "pg-promise": "^10.5.8"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.1.0",
     "eslint": "^7.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.5",
+    "faker": "^4.1.0",
+    "mocha": "^8.1.1",
     "nodemon": "^2.0.4"
   }
 }

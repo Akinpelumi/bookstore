@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - 'stable' 
+
+services:
+  - postgresql
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - psql -c 'create database bookstore-test;' -U postgres
+
+script:
+  - npm ci
+  - npm test
+
+after_success:
+  - npm run coverage

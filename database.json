@@ -8,6 +8,6 @@
     },
     "production": {
       "ENV": "PROD_DATABASE_URL"
-    }
+    },
+    "sql-file": true
 }
-  
