@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha -c -r esm server/test/**/ --timeout 30000 --exit",
-    "pretest": "NODE_ENV=test npm run lint && npm run migrate down && npm run migrate up",
+    "pretest": "NODE_ENV=test npm run lint && NODE_ENV=test npm run migrate down && NODE_ENV=test npm run migrate up",
     "test-watch": "NODE_ENV=test nodemon --exec \"npm test\"",
     "prestart": "npm run migrate:up",
     "start": "node -r esm server/index.js",
