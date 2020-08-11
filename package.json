@@ -4,7 +4,7 @@
   "description": "online book sales",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha -c -r esm server/test/**/ --timeout 30000 --exit",
+    "test": "NODE_ENV=test nyc --reporter=text --reporter=html mocha -c -r esm server/test/**/*.test.js --timeout 30000 --exit",
     "pretest": "NODE_ENV=test npm run lint && NODE_ENV=test npm run migrate down && NODE_ENV=test npm run migrate up",
     "test-watch": "NODE_ENV=test nodemon --exec \"npm test\"",
     "prestart": "npm run migrate:up",
@@ -16,7 +16,8 @@
     "migrate:down": "npm run migrate down",
     "migrate:create": "npm run migrate create",
     "seed": "npm run migrate up:seeds",
-    "create:seed": "npm run migrate create:seeds"
+    "create:seed": "npm run migrate create:seeds",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -55,6 +56,7 @@
     "eslint-plugin-react": "^7.20.5",
     "faker": "^4.1.0",
     "mocha": "^8.1.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0"
   }
 }
