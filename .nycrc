@@ -2,7 +2,8 @@
   "reporter": [
     "lcov",
     "text-summary",
-    "reporter-html"
+    "html",
+    "text"
   ],
   "require": [
     "@babel/register"

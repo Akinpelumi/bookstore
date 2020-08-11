@@ -4,7 +4,7 @@
     ],
     "env": {
       "test": {
-        "plugins": [ "istanbul" ]
+        "plugins": [ "babel-plugin-istanbul" ]
       }
     }
   }
