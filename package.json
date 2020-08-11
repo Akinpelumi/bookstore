@@ -4,7 +4,7 @@
   "description": "online book sales",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test nyc --reporter=text --reporter=html mocha -c -r esm server/test/**/*.test.js --timeout 30000 --exit",
+    "test": "NODE_ENV=test nyc --reporter=text --reporter=html mocha -c -r @babel/register server/test/**/*.test.js --timeout 30000 --exit",
     "pretest": "NODE_ENV=test npm run lint && NODE_ENV=test npm run migrate down && NODE_ENV=test npm run migrate up",
     "test-watch": "NODE_ENV=test nodemon --exec \"npm test\"",
     "prestart": "npm run migrate:up",
@@ -43,6 +43,9 @@
     "pg-promise": "^10.5.8"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/register": "^7.10.5",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.1.0",

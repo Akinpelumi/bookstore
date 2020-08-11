@@ -1,0 +1,12 @@
+{
+  "reporter": [
+    "lcov",
+    "text-summary",
+    "reporter-html"
+  ],
+  "require": [
+    "babel-register"
+  ],
+  "sourceMap": false,
+  "instrument": false
+}
