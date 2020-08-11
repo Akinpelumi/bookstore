@@ -4,7 +4,7 @@
   "description": "online book sales",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test nyc --reporter=text --reporter=html mocha -c -r esm server/test/**/*.test.js --timeout 30000 --exit",
+    "test": "NODE_ENV=test nyc --reporter=text --reporter=html _mocha -c -r esm server/test/**/*.test.js --timeout 30000 --exit",
     "pretest": "NODE_ENV=test npm run lint && NODE_ENV=test npm run migrate down && NODE_ENV=test npm run migrate up",
     "test-watch": "NODE_ENV=test nodemon --exec \"npm test\"",
     "prestart": "npm run migrate:up",
