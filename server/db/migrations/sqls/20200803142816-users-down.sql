@@ -1,4 +1,4 @@
 /* Replace with your SQL commands */
-DROP TABLE role_code;
-DROP EXTENSION "uuid-ossp"; 
+DROP EXTENSION "uuid-ossp" CASCADE; 
+DROP TABLE role_code CASCADE;
 DROP TABLE users;
