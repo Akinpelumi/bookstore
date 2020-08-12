@@ -17,7 +17,7 @@
     "migrate:create": "npm run migrate create",
     "seed": "npm run migrate up:seeds",
     "create:seed": "npm run migrate create:seeds",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
