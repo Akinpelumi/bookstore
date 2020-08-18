@@ -2,6 +2,7 @@
 import express from 'express';
 import 'dotenv/config';
 import logger from 'morgan';
+import routes from './routes/v1';
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.get('/', (req, res) => res.status(200).json({
   status: 'Success',
   message: 'Welcome to Bami-Bookstore'
 }));
+
+routes(app);
 
 app.use((req, res, next) => res.status(404).json({
   status: 'Fail',
