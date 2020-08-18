@@ -5,10 +5,9 @@ import app from '../../index';
 const { expect } = chai;
 chai.use(chaiHttp);
 
-describe('Welcome', () => {
+before('Welcome', () => {
   it('Should Successful welcome to bookstore', done => {
-    chai
-      .request(app)
+    chai.request(app)
       .get('/')
       .end((err, res) => {
         expect(res).to.have.status(200);

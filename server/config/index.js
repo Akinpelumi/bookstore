@@ -1,13 +1,12 @@
+/* eslint-disable no-nested-ternary */
 import devEnv from './development';
 import testEnv from './test';
 import prodEnv from './production';
 
-const {
-  NODE_ENV: ENVIRONMENT
-} = process.env;
+const config = process.env.NODE_ENV === 'development'
+  ? devEnv
+  : process.env.NODE_ENV === 'production'
+    ? prodEnv
+    : testEnv;
 
-export default {
-  devEnv,
-  testEnv,
-  prodEnv
-}[ENVIRONMENT || 'development'];
+export default config;

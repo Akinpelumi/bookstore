@@ -14,9 +14,12 @@
     "migrate": "db-migrate --migrations-dir ./server/db/migrations",
     "migrate:up": "npm run migrate up",
     "migrate:down": "npm run migrate down",
+    "migrate:reset": "npm run migrate reset",
     "migrate:create": "npm run migrate create",
-    "seed": "npm run migrate up:seeds",
-    "create:seed": "npm run migrate create:seeds",
+    "seed:up": "npm run migrate up:seeds",
+    "seed:down": "npm run migrate down:seeds",
+    "seed:reset": "npm run migrate reset:seeds",
+    "seed:create": "npm run migrate create:seeds",
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -35,16 +38,20 @@
   },
   "homepage": "https://github.com/Akinpelumi/bookstore#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg-promise": "^10.5.8"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/register": "^7.10.5",
     "babel-plugin-istanbul": "^6.0.0",
