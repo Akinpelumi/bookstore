@@ -4,7 +4,8 @@ import config from '../config';
 
 import {
   userQueries,
-  organizationQueries
+  organizationQueries,
+  adminQueries
 } from './queries/v1';
 
 const options = {
@@ -16,5 +17,6 @@ const db = pgp(config.DATABASE_URL);
 export {
   db,
   userQueries,
-  organizationQueries
+  organizationQueries,
+  adminQueries
 };

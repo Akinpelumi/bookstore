@@ -9,9 +9,9 @@ const { getUserByEmail, emailConfirmation, phoneNumberConfirmation } = userServi
  * A collection of middleware methods used to verify the autheticity
  * of a user's request through the Auth route.
  *
- * @class AuthMiddleware
+ * @class UserMiddleware
  */
-export default class UserAuthMiddleware {
+export default class UserMiddleware {
   /**
    * This is used to check if the signup fields sent pass the validation test
    * @static

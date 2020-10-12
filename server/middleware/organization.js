@@ -9,7 +9,7 @@ const { getOrganizationByEmail, emailConfirmation, phoneNumberConfirmation } = o
  * A collection of middleware methods used to verify the autheticity
  * of a organizations's request through the Auth route.
  *
- * @class AuthMiddleware
+ * @class OrganizationAuthMiddleware
  */
 export default class OrganizationAuthMiddleware {
   /**
