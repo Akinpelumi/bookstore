@@ -71,7 +71,7 @@ export default class AuthController {
    * @returns { JSON } A JSON response with the registered user's details and a JWT.
    * @memberof AuthController
    */
-  static signin(req, res) {
+  static userAndOrganizationSignin(req, res) {
     const { user } = req;
     const { id, role, is_confirmed, is_active } = user;
     const token = generateToken({ id, role, is_confirmed, is_active });
@@ -79,6 +79,25 @@ export default class AuthController {
       status: 'Success',
       message: 'sign in successful',
       data: { ...user, token }
+    });
+  }
+
+  /**
+   * Log in an admin.
+   * @static
+   * @param {Request} req - The request from the endpoint.
+   * @param {Response} res - The response returned by the method.
+   * @returns { JSON } A JSON response with the registered user's details and a JWT.
+   * @memberof AuthController
+   */
+  static adminSignin(req, res) {
+    const { admin } = req;
+    const { id, role, is_confirmed, is_active } = admin;
+    const token = generateToken({ id, role, is_confirmed, is_active });
+    res.status(200).json({
+      status: 'Success',
+      message: 'Welcome Admin',
+      data: { ...admin, token }
     });
   }
 }

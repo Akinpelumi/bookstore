@@ -12,12 +12,12 @@ const userQueries = {
     FROM users
     WHERE email=$1`,
   confirmEmail: `
-    SELECT email 
-    FROM users 
+    SELECT email
+    FROM users
     WHERE email = $1`,
   confirmPhoneNumber: `
-    SELECT phone_number 
-    FROM users 
+    SELECT phone_number
+    FROM users
     WHERE phone_number = $1`
 };
 

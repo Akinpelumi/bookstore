@@ -20,6 +20,7 @@
     "seed:down": "npm run migrate down:seeds",
     "seed:reset": "npm run migrate reset:seeds",
     "seed:create": "npm run migrate create:seeds",
+    "seed:admin": "node -r esm ./create_hash && npm run seed:up",
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -46,6 +47,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
+    "node-cmd": "^3.0.0",
     "pg-promise": "^10.5.8"
   },
   "devDependencies": {
@@ -69,6 +71,6 @@
     "faker": "^4.1.0",
     "mocha": "^8.1.1",
     "nodemon": "^2.0.4",
-    "nyc": "^13.3.0"
+    "nyc": "^15.1.0"
   }
 }

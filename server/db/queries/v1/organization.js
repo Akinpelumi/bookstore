@@ -14,12 +14,12 @@ const organizationQueries = {
     FROM organizations
     WHERE email=$1`,
   confirmEmail: `
-    SELECT email 
-    FROM organizations 
+    SELECT email
+    FROM organizations
     WHERE email = $1`,
   confirmPhoneNumber: `
-    SELECT phone_number 
-    FROM organizations 
+    SELECT phone_number
+    FROM organizations
     WHERE phone_number = $1`
 };
 
