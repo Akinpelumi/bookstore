@@ -21,6 +21,10 @@ CREATE TABLE IF NOT EXISTS users(
     role role_code DEFAULT 'USR',
     is_confirmed BOOLEAN DEFAULT FALSE,
     is_active BOOLEAN DEFAULT TRUE,
+    confirmation_token TEXT,
+    confirmation_token_at TIMESTAMPTZ,
+    password_reset_token TEXT,
+    password_reset_token_exp TIMESTAMPTZ,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -41,6 +45,10 @@ CREATE TABLE IF NOT EXISTS organizations(
     role role_code DEFAULT 'ORG',
     is_confirmed BOOLEAN DEFAULT FALSE,
     is_active BOOLEAN DEFAULT TRUE,
+    confirmation_token TEXT,
+    confirmation_token_at TIMESTAMPTZ,
+    password_reset_token TEXT,
+    password_reset_token_exp TIMESTAMPTZ,
     created_at TIMESTAMPTZ DEFAULT NOW(),
     updated_at TIMESTAMPTZ DEFAULT NOW()
 );

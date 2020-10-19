@@ -26,6 +26,17 @@ before('Auth Before Script', () => {
           expect(res.body.message).to.equal('New user has been created');
           expect(res.body.data).to.have.property('id');
           expect(res.body.data).to.have.property('token');
+          expect(res.body.data).to.have.property('confirmation_token');
+          expect(res.body.data.role).to.equal('USR');
+
+          chai.request(app)
+            .get(`/v1/bookstore-api/auth/user/confirmation?confirmation_token=${res.body.data.confirmation_token}`)
+            .end((err, res) => {
+              expect(res).to.have.status(200);
+              expect(res.body).to.have.property('message');
+              expect(res.body.updateStatus.is_confirmed).to.equal(true);
+              expect(res.body.message).to.equal('User account verified successfully');
+            });
           done();
         });
     });
@@ -73,6 +84,17 @@ before('Auth Before Script', () => {
           expect(res.body.message).to.equal('New organization has been created');
           expect(res.body.data).to.have.property('id');
           expect(res.body.data).to.have.property('token');
+          expect(res.body.data).to.have.property('confirmation_token');
+          expect(res.body.data.role).to.equal('ORG');
+
+          chai.request(app)
+            .get(`/v1/bookstore-api/auth/organization/confirmation?confirmation_token=${res.body.data.confirmation_token}`)
+            .end((err, res) => {
+              expect(res).to.have.status(200);
+              expect(res.body).to.have.property('message');
+              expect(res.body.updateStatus.is_confirmed).to.equal(true);
+              expect(res.body.message).to.equal('Organization account verified successfully');
+            });
           done();
         });
     });

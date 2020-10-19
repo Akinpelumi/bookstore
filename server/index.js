@@ -14,15 +14,20 @@ const port = process.env.PORT || 3050;
 app.set('port', port);
 
 app.get('/', (req, res) => res.status(200).json({
-  status: 'Success',
+  status: 'Ok',
   message: 'Welcome to Bami-Bookstore'
 }));
 
 routes(app);
 
 app.use((req, res, next) => res.status(404).json({
-  status: 'Fail',
+  status: 'Not Found',
   message: 'oooops! page not found'
+}));
+
+app.use((req, res, next) => res.status(400).json({
+  status: 'Fail',
+  message: 'Bad Request'
 }));
 
 app.use((err, req, res, next) => {

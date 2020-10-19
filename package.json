@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test nyc --reporter=text --reporter=html  _mocha -c -r @babel/register server/test/**/*.test.js --timeout 30000 --exit",
-    "pretest": "NODE_ENV=test npm run lint && NODE_ENV=test npm run migrate down && NODE_ENV=test npm run migrate up",
+    "pretest": "NODE_ENV=test npm run lint && NODE_ENV=test npm run migrate down && NODE_ENV=test npm run migrate up && NODE_ENV=test npm run migrate down:seeds && NODE_ENV=test npm run seed:admin",
     "test-watch": "NODE_ENV=test nodemon --exec \"npm test\"",
     "prestart": "npm run migrate:up",
     "start": "node -r esm server/index.js",
@@ -48,7 +48,8 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "node-cmd": "^3.0.0",
-    "pg-promise": "^10.5.8"
+    "pg-promise": "^10.5.8",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

@@ -26,7 +26,7 @@ describe('user login', () => {
         done();
       });
   });
-  it('Should return 400 when wrong login details are used', done => {
+  it('Should return 400 when wrong login details is used', done => {
     chai.request(app)
       .post('/v1/bookstore-api/auth/user/login')
       .send({
@@ -64,9 +64,28 @@ describe('Organization login', () => {
         done();
       });
   });
-  it('Should return 400 when wrong login details are used', done => {
+  it('Should return 400 when wrong login details is used', done => {
     chai.request(app)
       .post('/v1/bookstore-api/auth/organization/login')
+      .send({
+        email: faker.internet.email(),
+        password: faker.random.alphaNumeric()
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.statusCode).to.equal(401);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('invalid email/password');
+        done();
+      });
+  });
+});
+
+describe('admin login', () => {
+  it('Should return 400 when wrong admin login details is used', done => {
+    chai.request(app)
+      .post('/v1/bookstore-api/auth/admin/login')
       .send({
         email: faker.internet.email(),
         password: faker.random.alphaNumeric()

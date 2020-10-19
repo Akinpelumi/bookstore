@@ -19,6 +19,7 @@ class OrganizationModel {
     this.role = options.role;
     this.is_confirmed = options.is_confirmed;
     this.is_active = options.is_active;
+    this.confirmation_token = options.confirmation_token;
   }
 }
 

@@ -1,6 +1,7 @@
+import 'dotenv/config';
+import uuidv4 from 'uuid/dist/v4';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import 'dotenv/config';
 
 const sceret = process.env.SECRET;
 
@@ -93,5 +94,17 @@ export default class Helper {
       || req.headers.token
       || req.body.token
     );
+  }
+
+  /**
+   * Generates token upon signup to be used to confirm email of user/organization.
+   * @static
+   * @memberof Helper
+   * @returns {Promise<string>} - encrypted uuid based token
+   */
+  static getConfirmationToken() {
+    const random_str = uuidv4();
+    const token = Buffer.from(random_str);
+    return token.toString('base64');
   }
 }

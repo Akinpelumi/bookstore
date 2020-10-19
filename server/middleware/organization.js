@@ -3,7 +3,11 @@ import organizationServices from '../services/v1/organization';
 import Helper from '../utils/helpers';
 
 const { comparePassword } = Helper;
-const { getOrganizationByEmail, emailConfirmation, phoneNumberConfirmation } = organizationServices;
+const {
+  getOrganizationByEmail,
+  emailConfirmation,
+  phoneNumberConfirmation,
+  ifOrgIsConfirmed } = organizationServices;
 
 /**
  * A collection of middleware methods used to verify the autheticity
@@ -56,16 +60,24 @@ export default class OrganizationAuthMiddleware {
           message: 'invalid email/password'
         });
       } else {
-        const isCorrectPassword = await comparePassword(password, user.password);
-        if (isCorrectPassword) {
-          delete user.password;
-          req.user = user;
-          next();
-        } else {
-          res.status(401).json({
-            status: 'Fail',
-            message: 'invalid email/password'
+        const isConfirmed = await ifOrgIsConfirmed(true);
+        if (!isConfirmed) {
+          res.status(403).json({
+            status: 'Forbidden',
+            message: 'Confirm your email to log in'
           });
+        } else {
+          const isCorrectPassword = await comparePassword(password, user.password);
+          if (isCorrectPassword) {
+            delete user.password;
+            req.user = user;
+            next();
+          } else {
+            res.status(401).json({
+              status: 'Fail',
+              message: 'invalid email/password'
+            });
+          }
         }
       }
     }

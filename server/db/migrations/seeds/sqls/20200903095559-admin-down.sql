@@ -1,13 +1,13 @@
 
         DELETE FROM admins
         WHERE
-        email='ayodele@enyata.com';
+        email='akinpelumi@bamibookstore.com';
         
         DELETE FROM admins
         WHERE
-        email='akinpelumi@enyata.com';
+        email='bamise@bamibookstore.com';
         
         DELETE FROM admins
         WHERE
-        email='leticia@enyata.com';
+        email='ayodele@bamibookstore.com';
         

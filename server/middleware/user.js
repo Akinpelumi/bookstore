@@ -3,7 +3,11 @@ import userServices from '../services/v1/user';
 import Helper from '../utils/helpers';
 
 const { comparePassword } = Helper;
-const { getUserByEmail, emailConfirmation, phoneNumberConfirmation } = userServices;
+const {
+  getUserByEmail,
+  emailConfirmation,
+  phoneNumberConfirmation,
+  ifUserIsConfirmed } = userServices;
 
 /**
  * A collection of middleware methods used to verify the autheticity
@@ -56,16 +60,24 @@ export default class UserMiddleware {
           message: 'invalid email/password'
         });
       } else {
-        const isCorrectPassword = await comparePassword(password, user.password);
-        if (isCorrectPassword) {
-          delete user.password;
-          req.user = user;
-          next();
-        } else {
-          res.status(401).json({
-            status: 'Fail',
-            message: 'invalid email/password'
+        const isConfirmed = await ifUserIsConfirmed(true);
+        if (!isConfirmed) {
+          res.status(403).json({
+            status: 'Forbidden',
+            message: 'Confirm your email to log in'
           });
+        } else {
+          const isCorrectPassword = await comparePassword(password, user.password);
+          if (isCorrectPassword) {
+            delete user.password;
+            req.user = user;
+            next();
+          } else {
+            res.status(401).json({
+              status: 'Fail',
+              message: 'invalid email/password'
+            });
+          }
         }
       }
     }

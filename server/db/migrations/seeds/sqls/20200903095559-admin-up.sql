@@ -1,9 +1,9 @@
 INSERT INTO admins
       (first_name, last_name, email, phone_number, password)
       VALUES
-      ('Ayodele', 'Akinbohun', 'ayodele@enyata.com', '+2348139781267', '$2b$10$y44lRqOpy59TjJiu7vVs.uE000Q4R0aBkLjB0g0pDpjW6FSbRXKSS')
+      ('Akinpelumi', 'Akintunde', 'akinpelumi@bamibookstore.com', '+2348130827967', '$2b$10$rgnq4Iit/v/rNyC9VI8ilulmQF6KyIEp3f/vpfv7Y.HKbBi3YxKe.')
       ,
-      ('Akinpelumi', 'Akintunde', 'akinpelumi@enyata.com', '+2348130827967', '$2b$10$TzcFsQ3S6Ww5cXhPlriqYehOWWz66IWRafq7xFGRiJ4bITPgLwi4O')
+      ('Oluwabamise', 'Biala', 'bamise@bamibookstore.com', '+2348160045551', '$2b$10$f4fXVGYSblBu8mu9B3zf7OxVRP9h.OmRNGjClo3aR0405tCYlTTCy')
       ,
-      ('Leticia', 'Esiagu', 'leticia@enyata.com', '+2348130827669', '$2b$10$vnTSFEm2yofpBlbGmOh0bOSllXnfQH5X8L9ntplCCczAIn0DgNMpC')
+      ('Ayodele', 'Akinbohun', 'ayodele@bamibookstore.com', '+2348062340650', '$2b$10$cTGFRXPO35Cl3FfaH.qDa.l/nEJaR/jDEdwJcDLYderbo5oC9orS6')
       ;

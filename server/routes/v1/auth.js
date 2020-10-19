@@ -2,7 +2,13 @@ import { Router } from 'express';
 import { AuthController } from '../../controllers/v1';
 import { UserMiddleware, OrganizationMiddleware, AdminMiddleware } from '../../middleware';
 
-const { userSignup, organizationSignup, userAndOrganizationSignin, adminSignin } = AuthController;
+const {
+  userSignup,
+  organizationSignup,
+  userAndOrganizationSignin,
+  adminSignin,
+  userAccountStatusUpdating,
+  organizationAccountStatusUpdating } = AuthController;
 const {
   userSignUpValidator,
   validateUsrLoginInfo,
@@ -26,5 +32,7 @@ router.post('/user/login', validateUsrLoginInfo, userAndOrganizationSignin);
 router.post('/organization/signup', organizationSignUpValidator, orgSignUpEmailValidator, orgSignUpPhoneNumberValidator, organizationSignup);
 router.post('/organization/login', validateOrgLoginInfo, userAndOrganizationSignin);
 router.post('/admin/login', validateAdminLoginInfo, adminSignin);
+router.get('/user/confirmation', userAccountStatusUpdating);
+router.get('/organization/confirmation', organizationAccountStatusUpdating);
 
 export default router;
