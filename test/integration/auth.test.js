@@ -1,7 +1,7 @@
 import faker from 'faker';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../../index';
+import app from '../../server/index';
 
 const { expect } = chai;
 chai.use(chaiHttp);

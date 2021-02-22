@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import Helper from '../../utils/helpers';
-import UserService from '../../services/v1/user';
+import Helper from '../../server/utils/helpers';
 
-const { hashPassword, comparePassword, generateToken } = Helper;
+const { hashPassword, comparePassword } = Helper;
 
 const { expect } = chai;
 chai.use(chaiHttp);
