@@ -11,3 +11,4 @@ npm-shrinkwrap.json
 google.json
 uploads/
 .nyc_output
+package-lock.json
